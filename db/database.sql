@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS proyectounomysql;
+
+CREATE TABLE todolist(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    tarea VARCHAR(150) NOT NULL,
+    fecha VARCHAR(15) NOT NULL,
+    estado VARCHAR(5) DEFAULT 'No',
+    PRIMARY KEY (id)
+);
+

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica N°1 mysql</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="content">
+        <h1>Practica N°1 MySQL</h1>
+        <div class="cont">
+            <h2>Tabla de todolist</h2>
+            <form action="/procesar-dato" method="post">
+
+                <label for="tarea">Ingresa la Tarea:</label><br>
+
+                <input type="text" placeholder="ingrese aqui su tarea" name="tarea" required><br>
+
+                <label for="fecha">Ingrese la Fecha:</label><br>
+
+                <input type="date" placeholder="ingrese la fecha de inicio" name="fecha" required><br>
+
+                <label for="estado" >Completado:?</label><br>
+
+                <input type="text" name="estado" value="No"><br>
+
+                <button type="submit">Crear Tarea</button>
+                
+            </form>
+        </div>
+        <div class="content-listado">
+            <h2>DATOS del TODOLIST</h2>
+            <% data.forEach(function(row) { %>
+            <tr>
+                <td><%= row.tarea %></td>
+                <td><%= row.fecha %></td>
+                <td><%= row.estado %></td>
+            </tr>
+            <form action="/proceso-delete" method="post">
+                <input class="input-id" type="text" name="tareaID" value="<%= row.id %>">
+                <button type="submit">eliminar</button>
+            </form>
+            <form action="/proceso-completado" method="post">
+                <input class="input-id" type="text" name="tareaID" value="<%= row.id %>">
+                <input class="input-id" type="text" name="estado" value="SI">
+                <button type="submit">Completado</button>
+            </form>
+            <br>
+            
+            <% }); %>
+        </div>
+    </div>
+</body>
+</html>
